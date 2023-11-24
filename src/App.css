@@ -1,0 +1,65 @@
+a.active {
+  color: red;
+  text-decoration: underline;
+}
+
+.profile-shortcut {
+  text-align: center;
+  width: 250px;
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.navbar-main {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.profile-holder {
+  position: relative;
+}
+
+.proflie-item {
+  position: absolute;
+  top: 70px;
+  right: -50px;
+  z-index: 99;
+}
+
+.cotanct-bottom-banner {
+  background-image: linear-gradient(rgb(3 169 244 / 45%), #052833e8),
+    url(./assets/c1.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-bottom-banner {
+  background-image: linear-gradient(rgb(3 169 244 / 45%), #052833e8),
+    url(./assets/fort.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.active-profile-icon-area {
+  display: none;
+}
+
+@media only screen and (max-width: 1240px) {
+  .proflie-item {
+    right: 0px;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .proflie-item {
+    top: 50px;
+    left: 0px;
+  }
+}
