@@ -20,7 +20,12 @@ const Navbar = () => {
   //         .catch()
   // }
   const [open, setOpen] = useState(true);
-  const routes = [{ id: 1, path: "/", name: "Home" }];
+  const routes = [
+    { id: 1, path: "/", name: "Home" },
+    { id: 1, path: "/products", name: "products" },
+    { id: 1, path: "/addProducts", name: "add product" },
+  ];
+
   // function for user img
   let loginPhoto = () => {
     if (user.photoURL === null) {
