@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { WithContext as ReactTags } from "react-tag-input";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import ReactTagInput from "@pathofdev/react-tag-input";
 // import "@pathofdev/react-tag-input/build/index.css";
@@ -20,13 +20,6 @@ const AddProduct = () => {
     ownerInfo: {},
     tags: [],
     externalLink: "",
-    upvotes,
-    downVotes,
-    status: true, false,
-    featured,
-    report,
-    review{name,image,description,rating,}
-
   });
   ///////////////////////////////////
   const handleDelete = (i) => {
@@ -95,8 +88,8 @@ const AddProduct = () => {
     setLoading(true);
     const ownerInfo = {
       ownerName: user?.displayName,
-      ownerImage: user?.email,
-      ownerEmail: user?.photoURL,
+      ownerImage: user?.photoURL,
+      ownerEmail: user?.email,
     };
     // Other registration form submission logic
     const imageUrl = await uploadImageToImgBB(imageFile);
@@ -106,34 +99,34 @@ const AddProduct = () => {
       ownerInfo: ownerInfo,
       tags: tags,
     };
-    console.log(productData);
 
-    // fetch("https://assignment11ser.iitpark.com/api/v1/rooms/addrooms", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(productData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.status) {
-    //       toast.success("success");
-    //     }
-    //     setFormData({
-    //       size: "",
-    //       price: "",
-    //       description: "",
-    //       discount: "",
-    //       image: "",
-    //       totalSeat: "",
-    //     });
+    fetch("http://localhost:5000/api/v1/product/create", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          toast.success("success");
+          setFormData({
+            productName: "",
+            description: "",
+            productImage: "",
+            ownerInfo: {},
+            setTags: "",
+            externalLink: "",
+          });
+          setLoading(false);
+        }
 
-    //     setLoading(false);
-    //     if (data.error) {
-    //       toast.error(" failed");
-    //     }
-    //   });
+        if (data.error) {
+          toast.error(" failed");
+          setLoading(false);
+        }
+      });
   };
   return (
     <div className="bg-sky-50 min-h-screen">
