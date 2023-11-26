@@ -14,7 +14,6 @@ const SingleProduct = ({ product, handleUpVote, user }) => {
     description,
     tags,
   } = product;
-  console.log(upvotes?.includes(user?.email));
 
   return (
     <div>
@@ -31,13 +30,21 @@ const SingleProduct = ({ product, handleUpVote, user }) => {
             </div>
             <div className="flex gap-x-2 text-white">
               <div className="flex items-center">
-                <button onClick={() => handleUpVote(product)}>
-                  <AiFillLike
-                    className={`${upvotes?.includes(
-                      user?.email
-                    )} && 'text-orange-700' `}
-                  />
-                </button>
+                {product.ownerInfo?.ownerEmail === user?.email ? (
+                  <button>
+                    <AiFillLike />
+                  </button>
+                ) : (
+                  <button
+                    className={`text-xl ${
+                      upvotes?.includes(user?.email) && " text-orange-700"
+                    }`}
+                    onClick={() => handleUpVote(product)}
+                  >
+                    <AiFillLike />
+                  </button>
+                )}
+
                 <p className="ml-2"> {upvotes?.length}</p>
               </div>
               {/* <div className="flex items-center">

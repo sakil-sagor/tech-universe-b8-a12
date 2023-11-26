@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SingleProduct from "../../../Components/FrontendComp/SingleProduct/SingleProduct";
@@ -17,7 +18,9 @@ const Products = () => {
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState(0);
   const [updateAll, setUpdateAll] = useState(0);
+
   const limit = 9;
+  const navigate = useNavigate();
 
   useEffect(() => {
     let url = `http://localhost:5000/api/v1/product/all`;
@@ -43,7 +46,8 @@ const Products = () => {
 
   const handleUpVote = async (product) => {
     if (!user?.email) {
-      return toast.error("go to hell");
+      setPreviousLocation(window.location.pathname);
+      return navigate("/registration");
     }
     if (product.ownerInfo?.ownerEmail === user?.email) {
       return toast.error("You can not vote your own product");

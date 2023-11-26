@@ -49,7 +49,7 @@ const Login = () => {
       console.log(result?.user?.email);
 
       await axiosSecure.post(
-        "https://assignment11ser.iitpark.com/api/v1/accesstoken/generatetoken",
+        "http://localhost:5000/api/v1/accesstoken/generatetoken",
         { email: result?.user?.email }
       );
 
@@ -83,7 +83,7 @@ const Login = () => {
       const result = await googleLogin();
       console.log(result.user);
       await axiosSecure.post(
-        "https://assignment11ser.iitpark.com/api/v1/accesstoken/generatetoken",
+        "http://localhost:5000/api/v1/accesstoken/generatetoken",
         { email: result?.user?.email }
       );
       toast.success("User Register successfully ");

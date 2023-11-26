@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddProduct from "../Components/DashboradComp/AddProduct/AddProduct";
+import ProductsDetails from "../Components/FrontendComp/ProductsDetails/ProductsDetails";
 import ErroPage from "../Components/SharedComp/ErrorPage/ErroPage";
 import Main from "../Layout/Main";
 import Home from "../Pages/FrontendPages/Home/Home";
@@ -20,21 +21,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <Products></Products>,
-        loader: async () => {
-          try {
-            const response = await fetch(
-              "http://localhost:5000/api/v1/product/all"
-            );
-            if (!response.ok) {
-              throw new Error("Failed to fetch data");
-            }
-            const data = await response.json();
-            return data;
-          } catch (error) {
-            console.error("Error fetching data:", error);
-            throw error;
-          }
-        },
+      },
+      {
+        path: "product/:_id",
+        element: <ProductsDetails></ProductsDetails>,
       },
       {
         path: "/addProducts",
