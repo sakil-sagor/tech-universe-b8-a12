@@ -9,9 +9,8 @@ import LinkBar from "./LinkBar";
 import ProfileShortcut from "./ProfileShortcut";
 
 const Navbar = () => {
-  const { user, logOut, darkMode } = useContext(AuthContext);
-  console.log(user);
-
+  // console.log(user);
+  const { user, logOut } = useContext(AuthContext);
   const [profileState, setProfileState] = useState("Off");
   // console.log(user)
   // const handleSignOut = () => {
@@ -23,7 +22,6 @@ const Navbar = () => {
   const routes = [
     { id: 1, path: "/", name: "Home" },
     { id: 1, path: "/products", name: "products" },
-    { id: 1, path: "/addProducts", name: "add product" },
   ];
 
   // function for user img
@@ -40,9 +38,7 @@ const Navbar = () => {
   };
   return (
     <div
-      className={` sticky top-0 border-b shadow-lg shadow-blue-200  z-[9999] ${
-        darkMode ? "bg-gray-500 text-white" : "bg-sky-50 text-black"
-      }`}
+      className={` sticky top-0 border-b shadow-lg shadow-blue-200  z-[9999] bg-sky-50 text-black }`}
     >
       <div className="py-4 container mx-auto px-2">
         <div className="flex justify-between items-center">

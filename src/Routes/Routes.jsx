@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddProduct from "../Components/DashboradComp/AddProduct/AddProduct";
+import ViewProfile from "../Components/DashboradComp/ViewProfile/ViewProfile";
 import ProductsDetails from "../Components/FrontendComp/ProductsDetails/ProductsDetails";
 import ErroPage from "../Components/SharedComp/ErrorPage/ErroPage";
+import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Home from "../Pages/FrontendPages/Home/Home";
 import Products from "../Pages/FrontendPages/Products/Products";
@@ -26,13 +28,24 @@ const router = createBrowserRouter([
         path: "product/:_id",
         element: <ProductsDetails></ProductsDetails>,
       },
+
       {
-        path: "/addProducts",
-        element: <AddProduct></AddProduct>,
+        path: "registration",
+        element: <Registration></Registration>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "dashboard",
+        element: <ViewProfile></ViewProfile>,
       },
       {
-        path: "/registration",
-        element: <Registration></Registration>,
+        path: "dashboard/addproduct",
+        element: <AddProduct></AddProduct>,
       },
     ],
   },

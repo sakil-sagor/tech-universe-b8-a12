@@ -131,7 +131,7 @@ const AddProduct = () => {
   return (
     <div className="bg-sky-50 min-h-screen">
       <div className=" pt-4  pb-24 ">
-        <div className="w-full md:2/4 lg:w-2/4 m-auto pt-12">
+        <div className="w-full md:3/4 lg:w-2/4 m-auto pt-12">
           <div className="bg-sky-50 ">
             <div className=" ">
               <div className=" border shadow-md shadow-blue-300 px-2 py-6 md:p-8 text-center rounded-md">
@@ -152,7 +152,7 @@ const AddProduct = () => {
                       <input
                         className="py-1 w-full  px-2 rounded-md border border-gray-300"
                         type="text"
-                        value={user?.displayName}
+                        value={user?.displayName || user?.email.split("@")[0]}
                       />
                     </div>
                     <div>

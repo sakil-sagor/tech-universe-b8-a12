@@ -18,20 +18,21 @@ const Products = () => {
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState(0);
   const [updateAll, setUpdateAll] = useState(0);
+  const [searchText, setSearchText] = useState("");
 
-  const limit = 9;
+  const limit = 3;
   const navigate = useNavigate();
 
   useEffect(() => {
-    let url = `http://localhost:5000/api/v1/product/all`;
-    // let url = `http://localhost:5000/api/v1/rooms/all?sort=${sortByPrice}&page=${
-    //   page + 1
-    // }&limit=${limit}`;
+    // let url = `http://localhost:5000/api/v1/product/all`;
+    let url = `http://localhost:5000/api/v1/product/all?search=${searchText}&page=${
+      page + 1
+    }&limit=${limit}`;
     const fetchProducts = async () => {
       try {
         const response = await axios.get(url);
-
-        setProducts(response?.data?.data);
+        console.log(response);
+        setProducts(response?.data?.data?.result);
         setCount(response?.data?.data?.pageCount);
         setTotal(response?.data?.data?.totalRoom);
 
@@ -43,6 +44,30 @@ const Products = () => {
     };
     fetchProducts();
   }, [page, total, sortByPrice, updateAll]);
+
+  const handelSearch = () => {
+    useEffect(() => {
+      // let url = `http://localhost:5000/api/v1/product/all?`;
+      // let url = `http://localhost:5000/api/v1/rooms/all?sort=${sortByPrice}&page=${
+      //   page + 1
+      // }&limit=${limit}`;
+      const fetchProducts = async () => {
+        try {
+          const response = await axios.get(url);
+
+          setProducts(response?.data?.data);
+          setCount(response?.data?.data?.pageCount);
+          setTotal(response?.data?.data?.totalRoom);
+
+          setLoading(false);
+        } catch (error) {
+          setError(error);
+          setLoading(false);
+        }
+      };
+      fetchProducts();
+    }, [page, total, sortByPrice, updateAll]);
+  };
 
   const handleUpVote = async (product) => {
     if (!user?.email) {
@@ -87,16 +112,30 @@ const Products = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto px-2">
       <div>
         <div className="py-4">
           <h2 className="text-sky-800 font-semibold text-2xl ">
-            <AiFillDatabase className="inline mb-1"></AiFillDatabase> All Rooms:{" "}
+            <AiFillDatabase className="inline mb-1"></AiFillDatabase> All
+            Products:
           </h2>
           <div className="flex items-center justify-between mt-4 px-2">
             <p>
               Total Result: <span>{total}</span>
             </p>
+            <div>
+              <input
+                type="text"
+                className="border py-2 rounded-l-md"
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+              <button
+                onClick={handelSearch}
+                className="border py-2 rounded-r-md px-2 bg-sky-700 text-white hover:bg-sky-900 duration-300"
+              >
+                Search
+              </button>
+            </div>
             <div>
               <label htmlFor="">Sort By </label>
 

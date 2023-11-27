@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 
 // profile area
@@ -24,6 +25,9 @@ const ProfileShortcut = ({ loginPhoto }) => {
         ) : (
           <p className="text-white ">Name: N/A</p>
         )}
+      </div>
+      <div className="mb-2 text-white">
+        <Link to="/dashboard">Dashoboard</Link>
       </div>
       <hr />
 
