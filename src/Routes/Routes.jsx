@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddProduct from "../Components/DashboradComp/AddProduct/AddProduct";
+import MyProducts from "../Components/DashboradComp/MyProducts/MyProducts";
 import ViewProfile from "../Components/DashboradComp/ViewProfile/ViewProfile";
 import ProductsDetails from "../Components/FrontendComp/ProductsDetails/ProductsDetails";
 import ErroPage from "../Components/SharedComp/ErrorPage/ErroPage";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "dashboard/addproduct",
         element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "dashboard/myproduct",
+        element: <MyProducts></MyProducts>,
       },
     ],
   },

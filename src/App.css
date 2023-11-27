@@ -50,6 +50,13 @@ a.active {
 .active-profile-icon-area {
   display: none;
 }
+.even-row {
+  background-color: #ffffff;
+}
+
+.odd-row {
+  background-color: #f3f3f3;
+}
 
 @media only screen and (max-width: 1240px) {
   .proflie-item {
