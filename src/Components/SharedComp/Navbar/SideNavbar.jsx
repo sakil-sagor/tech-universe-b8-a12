@@ -30,7 +30,7 @@ const SideNavbar = () => {
           <div>
             <Link
               className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-              to="dashboard"
+              to="/dashboard"
             >
               View Profile
             </Link>
@@ -38,7 +38,7 @@ const SideNavbar = () => {
           <div>
             <Link
               className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-              to="dashboard/addproduct"
+              to="/dashboard/addproduct"
             >
               Add Product
             </Link>
@@ -48,7 +48,7 @@ const SideNavbar = () => {
               <div>
                 <Link
                   className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-                  to="dashboard/myproduct"
+                  to="/dashboard/myproduct"
                 >
                   My Products
                 </Link>

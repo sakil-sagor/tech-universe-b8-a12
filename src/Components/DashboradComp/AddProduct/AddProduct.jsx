@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import ReactTagInput from "@pathofdev/react-tag-input";
 // import "@pathofdev/react-tag-input/build/index.css";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import blue from "../../../assets/blue.gif";
 
@@ -13,6 +14,7 @@ const AddProduct = () => {
   const [imageFile, setImageFile] = useState(null);
   const [tags, setTags] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     productName: "",
     description: "",
@@ -120,6 +122,9 @@ const AddProduct = () => {
             externalLink: "",
           });
           setLoading(false);
+          setTimeout(() => {
+            navigate("/dashboard/myproduct");
+          }, 1500);
         }
 
         if (data.error) {

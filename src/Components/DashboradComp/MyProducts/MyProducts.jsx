@@ -27,7 +27,6 @@ const MyProducts = () => {
 
   // delete product
   const handelDeletProduct = async (productId) => {
-    console.log(productId);
     try {
       const response = await axiosSecure.delete(
         `http://localhost:5000/api/v1/product/?productId=${productId}`
@@ -38,10 +37,10 @@ const MyProducts = () => {
 
       if (data.status === "success") {
         toast.success("Successfully Removed");
-        const remainingData = allBokking.filter(
-          (booking) => booking?.item?._id !== orderId
+        const remainingData = products.filter(
+          (product) => product?._id !== productId
         );
-        setAllBooking(remainingData);
+        setProducts(remainingData);
       }
     } catch (error) {
       console.error("Error while removing booking:", error);
