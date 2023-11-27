@@ -31,7 +31,7 @@ const MyProducts = () => {
   const handelDeletProduct = async (productId) => {
     try {
       const response = await axiosSecure.delete(
-        `http://localhost:5000/api/v1/product/delteProduct?productId=${productId}`
+        `http://localhost:5000/api/v1/product/update?productId=${productId}`
       );
 
       const data = response.data;
