@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../../Context/AuthProvider";
 import { axiosSecure } from "../../../hooks/useAxios";
 import Loading from "../../SharedComp/Loading/Loading";
@@ -29,7 +31,7 @@ const MyProducts = () => {
   const handelDeletProduct = async (productId) => {
     try {
       const response = await axiosSecure.delete(
-        `http://localhost:5000/api/v1/product/?productId=${productId}`
+        `http://localhost:5000/api/v1/product/delteProduct?productId=${productId}`
       );
 
       const data = response.data;
@@ -87,12 +89,12 @@ const MyProducts = () => {
                         key={teacher._id}
                         className={index % 2 === 0 ? "bg-[#f2f2f2]" : ""}
                       >
-                        <td className="px-4 py-2">{"10012001"}</td>
+                        <td className="px-4 py-2">{teacher?.productId}</td>
                         <td className="px-4 py-2 text-sky-700 font-semibold">
                           {teacher?.productName}
                         </td>
                         <td className="px-4 py-2 text-sky-700">
-                          {teacher?.tags?.length}
+                          {teacher?.upvotes?.length}
                         </td>
                         <td className="md:px-4 py-2 text-white">
                           {teacher?.status ? (
@@ -127,6 +129,7 @@ const MyProducts = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-center" autoClose={1000} theme="colored" />
     </div>
   );
 };

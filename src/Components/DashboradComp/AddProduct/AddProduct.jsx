@@ -1,10 +1,8 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { WithContext as ReactTags } from "react-tag-input";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import ReactTagInput from "@pathofdev/react-tag-input";
-// import "@pathofdev/react-tag-input/build/index.css";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import blue from "../../../assets/blue.gif";
 
