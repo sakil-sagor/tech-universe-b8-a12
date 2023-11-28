@@ -72,9 +72,9 @@ const SideNavbar = () => {
               <div>
                 <Link
                   className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-                  to="/dashboard/notice"
+                  to="/dashboard/reportedcontent"
                 >
-                  Notice
+                  Reported Content
                 </Link>
               </div>
             </>

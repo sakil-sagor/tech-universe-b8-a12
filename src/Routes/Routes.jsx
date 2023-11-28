@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AddProduct from "../Components/DashboradComp/AddProduct/AddProduct";
 import MyProducts from "../Components/DashboradComp/MyProducts/MyProducts";
 import ProductReview from "../Components/DashboradComp/ProductReview/ProductReview";
+import ReportedContents from "../Components/DashboradComp/ReportedContents/ReportedContents";
 import ViewProfile from "../Components/DashboradComp/ViewProfile/ViewProfile";
 import ProductsDetails from "../Components/FrontendComp/ProductsDetails/ProductsDetails";
 import ErroPage from "../Components/SharedComp/ErrorPage/ErroPage";
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/reviewproduct",
         element: <ProductReview></ProductReview>,
+      },
+      {
+        path: "/dashboard/reportedcontent",
+        element: <ReportedContents></ReportedContents>,
       },
     ],
   },
