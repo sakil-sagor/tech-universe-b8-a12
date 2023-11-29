@@ -31,7 +31,6 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(url);
-        console.log(response);
         setProducts(response?.data?.data?.result);
         setCount(response?.data?.data?.pageCount);
         setTotal(response?.data?.data?.totalRoom);
@@ -71,7 +70,7 @@ const Products = () => {
 
   const handleUpVote = async (product) => {
     if (!user?.email) {
-      setPreviousLocation(window.location.pathname);
+      // setPreviousLocation(window.location.pathname);
       return navigate("/registration");
     }
     if (product.ownerInfo?.ownerEmail === user?.email) {

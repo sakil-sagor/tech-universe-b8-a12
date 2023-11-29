@@ -37,28 +37,36 @@ const SignUp = ({ loginArea }) => {
     // }
 
     // create user
-    createUser(email, password).then((result) => {
-      const user = result.user;
-      console.log(result.user);
-      setUser(user);
-      updateProfileName(name, photoURL)
-        .then(() => {
-          // create user entry in the database
-          const userInfo = {
-            name: name,
-            email: email,
-            role: "user",
-          };
-          axiosSecure.post("/user", userInfo).then((res) => {
-            console.log(res.data);
-            if (res.data.status === "success") {
-              toast.success("Successfully added user");
-              navigate("/");
-            }
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        updateProfileName(name, photoURL)
+          .then(() => {
+            // create user entry in the database
+            const userInfo = {
+              name: name,
+              email: email,
+              role: "user",
+            };
+            axiosSecure.post("/user", userInfo).then((res) => {
+              console.log(res.data);
+              if (res.data.status === "success") {
+                setTimeout(() => {
+                  toast.success("Successfully signup");
+                }, 1000);
+
+                navigate("/");
+              }
+            });
+          })
+          .catch((error) => {
+            toast.error(error.message);
           });
-        })
-        .catch((error) => console.log(error));
-    });
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
   return (
     <div className=" bg-sky-50">

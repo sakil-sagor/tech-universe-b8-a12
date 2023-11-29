@@ -9,7 +9,7 @@ const AllReviews = ({ product }) => {
 
     return `${day}-${month}-${year}`;
   };
-  console.log(product);
+
   return (
     <div className="shadow-2xl p-4 bg-sky-200 rounded-lg">
       {!product?.review?.length ? (

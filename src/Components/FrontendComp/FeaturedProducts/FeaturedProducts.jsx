@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../../Context/AuthProvider";
@@ -14,7 +14,7 @@ const FeaturedProducts = () => {
   const [allProducts, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [updateAll, setUpdateAll] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     let url = `http://localhost:5000/api/v1/product/featuredProducts`;
     const fetchProducts = async () => {
@@ -30,11 +30,11 @@ const FeaturedProducts = () => {
     fetchProducts();
   }, [updateAll]);
   useEffect(() => {
-    let url = `http://localhost:5000/api/v1/product/all`;
+    let url = `http://localhost:5000/api/v1/product/treading`;
     const fetchProducts = async () => {
       try {
         const response = await axios.get(url);
-        setProducts(response?.data?.data?.result);
+        setProducts(response?.data?.data);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -46,7 +46,7 @@ const FeaturedProducts = () => {
 
   const handleUpVote = async (product) => {
     if (!user?.email) {
-      setPreviousLocation(window.location.pathname);
+      //   setPreviousLocation(window.location.pathname);
       return navigate("/registration");
     }
     if (product?.ownerInfo?.ownerEmail === user?.email) {

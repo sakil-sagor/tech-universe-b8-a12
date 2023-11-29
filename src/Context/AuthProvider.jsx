@@ -67,19 +67,19 @@ const AuthProvider = ({ children }) => {
   };
 
   // get the current sign in user and toogle login register button
-  useEffect(() => {
-    setLoading(true);
-    const unsubscribed = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // const uid = user.uid;
-        setUser(user);
-      } else {
-        setUser({});
-      }
-      setLoading(false);
-    });
-    return () => unsubscribed;
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const unsubscribed = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       // const uid = user.uid;
+  //       setUser(user);
+  //     } else {
+  //       setUser({});
+  //     }
+  //     setLoading(false);
+  //   });
+  //   return () => unsubscribed;
+  // }, []);
 
   const saveUser = (displayName, email, method) => {
     const user = { name: displayName, email: email, role: "" };

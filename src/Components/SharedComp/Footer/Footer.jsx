@@ -69,7 +69,7 @@ const Footer = () => {
       </div>
       <div className="grid grid-cols-2">
         <div className="bg-pink-900 py-4"></div>
-        <div className="footer-right-color py-4"></div>
+        <div className="bg-sky-950 py-4"></div>
       </div>
       {/* footer bottom  */}
       <div className="bg-black">
