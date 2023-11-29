@@ -79,6 +79,18 @@ const SideNavbar = () => {
               </div>
             </>
           )}
+          {user?.email && (
+            <>
+              <div>
+                <Link
+                  className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
+                  to="/dashboard/manageusers"
+                >
+                  Manage Users
+                </Link>
+              </div>
+            </>
+          )}
           {
             <div className="mt-24">
               <button
