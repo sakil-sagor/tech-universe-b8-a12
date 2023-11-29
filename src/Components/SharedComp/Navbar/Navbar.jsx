@@ -3,7 +3,6 @@ import { FaBars } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 import { AuthContext } from "../../../Context/AuthProvider";
-import logo from "../../../assets/logo.png";
 import pro1 from "../../../assets/pro1.png";
 import userRole from "../../../hooks/userRole";
 import LinkBar from "./LinkBar";
@@ -45,10 +44,9 @@ const Navbar = () => {
       <div className="py-4 container mx-auto px-2">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-x-2">
-            <NavLink to="/">
-              <img className="rounded-md w-16" src={logo} alt="" />
-            </NavLink>
-            <h1 className="block text-4xl text-sky-800 font-bold">I-Dream</h1>
+            <h1 className="block text-4xl text-sky-800 font-bold">
+              T-UniverS.
+            </h1>
           </div>
           <div>
             <ul className=" hidden md:flex">

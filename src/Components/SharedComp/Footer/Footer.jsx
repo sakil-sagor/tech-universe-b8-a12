@@ -4,10 +4,11 @@ const Footer = () => {
     <div className="bg-gray-900  ">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 container full-width-all m-auto pb-8 px-2">
         {/* left section  */}
-        <div className="col-sapn- ">
+        <div className="mt-4 text-center">
           <NavLink to="/home">
-            <h2>I dream</h2>
+            <h2 className="text-pink-500 text-4xl text-center ">T-UniverS.</h2>
           </NavLink>
+          <p className="text-white text-sky-900">Find What is Yours!</p>
         </div>
         {/* middle section */}
         <div className="col-sapn-1 ">
