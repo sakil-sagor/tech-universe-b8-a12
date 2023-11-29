@@ -13,7 +13,7 @@ const Navbar = () => {
   const { userDetails } = userRole();
   const { user, logOut } = useContext(AuthContext);
   const [profileState, setProfileState] = useState("Off");
-  console.log(userDetails);
+
   // console.log(user)
   // const handleSignOut = () => {
   //     logOut()

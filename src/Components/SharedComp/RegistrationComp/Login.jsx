@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { AuthContext } from "../../../Context/AuthProvider";
 import useAxios from "../../../hooks/useAxios";
+
 const Login = () => {
   const { signIn, googleLogin } = useContext(AuthContext);
   const location = useLocation();
@@ -82,10 +83,16 @@ const Login = () => {
     try {
       const result = await googleLogin();
       console.log(result.user);
+      const userInfo = {
+        name: result?.user?.displayName,
+        email: result?.user?.email,
+        role: "user",
+      };
       await axiosSecure.post(
         "http://localhost:5000/api/v1/accesstoken/generatetoken",
         { email: result?.user?.email }
       );
+
       toast.success("User Register successfully ");
 
       if (result?.user?.email) {

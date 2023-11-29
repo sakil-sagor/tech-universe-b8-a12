@@ -11,13 +11,13 @@ const userRole = () => {
     setIsAdminLoading(true);
 
     axiosSecure.get(`/user/${user?.email}`).then((res) => {
-      console.log(res.data.data);
+      // console.log(res.data.data);
       setUserDetials(res?.data?.data);
       setIsAdminLoading(false);
     });
   }, [user?.email]);
 
-  console.log(userDetils);
+  // console.log(userDetils);
   return { userDetils, isAdminLoading };
 };
 

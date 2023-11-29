@@ -5,8 +5,9 @@ import Loading from "../../Shared/Loading/Loading";
 import { default as userRole } from "../../hooks/userRole";
 
 const AdminRoute = ({ children }) => {
-  const { userDetails, isAdminLoading } = userRole();
   const { user, loading } = useContext(AuthContext);
+  const { userDetails, isAdminLoading } = userRole();
+  console.log(user, userDetails);
   const location = useLocation();
   if (loading || isAdminLoading) {
     return <Loading></Loading>;

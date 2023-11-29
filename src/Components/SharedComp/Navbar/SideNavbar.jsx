@@ -2,15 +2,18 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import profileImage from "../../../assets/pro1.png";
+import userRole from "../../../hooks/userRole";
 
 const SideNavbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { userDetails, isAdminLoading } = userRole();
+  console.log(userDetails);
   const navigate = useNavigate();
   // log out button
 
   const handleLogOut = () => {
-    logout();
-    navigate("/login", { replace: true });
+    logOut();
+    navigate("/registration", { replace: true });
     // setLoading(false)
   };
 
@@ -18,33 +21,34 @@ const SideNavbar = () => {
     <div className="">
       <div div className=" px-2  mx-auto md:min-h-screen">
         <div className="rawer-content menu text-black font-semibold">
-          <div className="mb-6">
-            <img
-              className="w-20 rounded-full block mx-auto"
-              src={profileImage}
-              alt=""
-            />
-            {/* <p className="text-2xl mt-4">{teacher?.teacherName}</p> */}
-          </div>
-          <hr className="mb-6" />
-          <div>
-            <Link
-              className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-              to="/dashboard"
-            >
-              View Profile
-            </Link>
-          </div>
-          <div>
-            <Link
-              className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-              to="/dashboard/addproduct"
-            >
-              Add Product
-            </Link>
-          </div>
           {user?.email && (
             <>
+              <div className="mb-6">
+                <img
+                  className="w-20 rounded-full block mx-auto"
+                  src={profileImage}
+                  alt=""
+                />
+                {/* <p className="text-2xl mt-4">{teacher?.teacherName}</p> */}
+              </div>
+              <hr className="mb-6" />
+              <div>
+                <Link
+                  className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
+                  to="/dashboard"
+                >
+                  View Profile
+                </Link>
+              </div>
+              <div>
+                <Link
+                  className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
+                  to="/dashboard/addproduct"
+                >
+                  Add Product
+                </Link>
+              </div>
+
               <div>
                 <Link
                   className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
@@ -55,7 +59,7 @@ const SideNavbar = () => {
               </div>
             </>
           )}
-          {user?.email && (
+          {userDetails?.role === "moderator" && (
             <>
               <div>
                 <Link
@@ -65,10 +69,7 @@ const SideNavbar = () => {
                   Product Review
                 </Link>
               </div>
-            </>
-          )}
-          {user?.email && (
-            <>
+
               <div>
                 <Link
                   className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
@@ -79,7 +80,7 @@ const SideNavbar = () => {
               </div>
             </>
           )}
-          {user?.email && (
+          {userDetails?.role === "admin" && (
             <>
               <div>
                 <Link
