@@ -30,7 +30,7 @@ const ViewProfile = () => {
             <div className="my-6">
               <p className="text-gray-600 ">Full Name</p>
               <h1 className="text-indigo-900 font-semibold text-2xl">
-                {user?.displayName || user?.email.split("@")[0]}
+                {user?.displayName || user?.email?.split("@")[0]}
               </h1>
             </div>
             <div>

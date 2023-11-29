@@ -5,13 +5,15 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Context/AuthProvider";
 import logo from "../../../assets/logo.png";
 import pro1 from "../../../assets/pro1.png";
+import userRole from "../../../hooks/userRole";
 import LinkBar from "./LinkBar";
 import ProfileShortcut from "./ProfileShortcut";
 
 const Navbar = () => {
+  const { userDetails } = userRole();
   const { user, logOut } = useContext(AuthContext);
   const [profileState, setProfileState] = useState("Off");
-  console.log(user);
+  console.log(userDetails);
   // console.log(user)
   // const handleSignOut = () => {
   //     logOut()

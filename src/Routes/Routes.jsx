@@ -12,6 +12,7 @@ import Main from "../Layout/Main";
 import Home from "../Pages/FrontendPages/Home/Home";
 import Products from "../Pages/FrontendPages/Products/Products";
 import Registration from "../Pages/FrontendPages/RegistrationPage/Registration";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -41,31 +42,60 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard",
-        element: <ViewProfile></ViewProfile>,
+        element: (
+          <PrivateRoute>
+            <ViewProfile></ViewProfile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/addproduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
+
       {
         path: "/dashboard/myproduct",
-        element: <MyProducts></MyProducts>,
+        element: (
+          <PrivateRoute>
+            <MyProducts></MyProducts>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/reviewproduct",
-        element: <ProductReview></ProductReview>,
+        element: (
+          <PrivateRoute>
+            <ProductReview></ProductReview>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/reportedcontent",
-        element: <ReportedContents></ReportedContents>,
+        element: (
+          <PrivateRoute>
+            <ReportedContents></ReportedContents>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/dashboard/manageusers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <PrivateRoute>
+            <ManageUsers></ManageUsers>
+          </PrivateRoute>
+        ),
       },
     ],
   },
