@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { WithContext as ReactTags } from "react-tag-input";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +14,7 @@ const UpdateProduct = () => {
   const [tags, setTags] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
   const [imageUr, setImageUr] = useState("");
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     productName: "",
@@ -104,6 +105,7 @@ const UpdateProduct = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const imageUrl = await uploadImageToImgBB(imageFile);
     if (!imageUrl) {
       formData.tags = tags;
@@ -126,10 +128,15 @@ const UpdateProduct = () => {
       .then((data) => {
         if (data.status === "success") {
           toast.success("Successfully updated the product");
+          setLoading(false);
+          setTimeout(() => {
+            navigate("/dashboard/myproduct");
+          }, 1500);
         }
       })
       .catch((error) => {
         console.error("Error updating product:", error);
+        setLoading(false);
       });
   };
 

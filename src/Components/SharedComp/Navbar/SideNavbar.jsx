@@ -6,11 +6,9 @@ import userRole from "../../../hooks/userRole";
 
 const SideNavbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const { userDetails, isAdminLoading } = userRole();
-  console.log(userDetails);
+  const [userDetails, isAdminLoading] = userRole();
   const navigate = useNavigate();
   // log out button
-
   const handleLogOut = () => {
     logOut();
     navigate("/registration", { replace: true });
@@ -59,26 +57,30 @@ const SideNavbar = () => {
               </div>
             </>
           )}
-          {userDetails?.role === "moderator" && (
-            <>
-              <div>
-                <Link
-                  className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-                  to="/dashboard/reviewproduct"
-                >
-                  Product Review
-                </Link>
-              </div>
+          {!isAdminLoading && (
+            <div>
+              {userDetails?.role === "moderator" && (
+                <>
+                  <div>
+                    <Link
+                      className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
+                      to="/dashboard/reviewproduct"
+                    >
+                      Product Review
+                    </Link>
+                  </div>
 
-              <div>
-                <Link
-                  className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-                  to="/dashboard/reportedcontent"
-                >
-                  Reported Content
-                </Link>
-              </div>
-            </>
+                  <div>
+                    <Link
+                      className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
+                      to="/dashboard/reportedcontent"
+                    >
+                      Reported Content
+                    </Link>
+                  </div>
+                </>
+              )}
+            </div>
           )}
           {userDetails?.role === "admin" && (
             <>

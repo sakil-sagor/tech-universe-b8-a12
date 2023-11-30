@@ -11,12 +11,18 @@ const ProductReview = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [updateAll, setUpdateAll] = useState(0);
+  const [page, setPage] = useState(0);
+  const limit = 10;
 
   useEffect(() => {
-    let url = `http://localhost:5000/api/v1/product/all`;
+    let url = `http://localhost:5000/api/v1/product/allreviewproduct?sort=-status&page=${
+      page + 1
+    }&limit=${limit}`;
+
     const fetchProducts = async () => {
       try {
         const response = await axiosSecure.get(url);
+
         setProducts(response?.data?.data?.result);
 
         setLoading(false);
@@ -34,10 +40,44 @@ const ProductReview = () => {
       );
 
       const data = response.data;
+      if (data.status === "success") {
+        toast.success("Successfully Removed");
+        setUpdateAll(updateAll + 1);
+      }
+    } catch (error) {
+      console.error("Error while removing booking:", error);
+    }
+  };
+
+  const handelStatusActive = async (productId) => {
+    try {
+      const response = await axiosSecure.patch(
+        `http://localhost:5000/api/v1/product/statusActive?productId=${productId}`
+      );
+
+      const data = response.data;
       console.log(data);
 
       if (data.status === "success") {
-        toast.success("Successfully Removed");
+        toast.success("Successfully Activated");
+
+        setUpdateAll(updateAll + 1);
+      }
+    } catch (error) {
+      console.error("Error while removing booking:", error);
+    }
+  };
+  const handelStatusReject = async (productId) => {
+    try {
+      const response = await axiosSecure.patch(
+        `http://localhost:5000/api/v1/product/statusReject?productId=${productId}`
+      );
+
+      const data = response.data;
+      console.log(data);
+
+      if (data.status === "success") {
+        toast.success("Successfully Rejected");
 
         setUpdateAll(updateAll + 1);
       }
@@ -117,15 +157,35 @@ const ProductReview = () => {
                           </td>
                           <td className="px-4 py-2  text-white">
                             <div className="flex gap-1">
-                              <button
-                                className="border text-white  bg-blue-700 border-blue-700 hover:bg-white hover:text-blue-700  py-1 px-2 rounded duration-300"
-                                onClick={() => handelDeletProduct(product?._id)}
-                              >
-                                Accept
-                              </button>
-                              <button className="border border-red-700 text-red-700 hover:text-white  hover:bg-red-700 py-1 px-2 rounded duration-300">
-                                Reject
-                              </button>
+                              {product?.status === "active" ? (
+                                <button className="border text-gray-700  bg-gray-300 border-gray-300  py-1 px-2 rounded duration-300">
+                                  Accept
+                                </button>
+                              ) : (
+                                <button
+                                  className="border text-white  bg-blue-700 border-blue-700 hover:bg-white hover:text-blue-700  py-1 px-2 rounded duration-300"
+                                  onClick={() =>
+                                    handelStatusActive(product?._id)
+                                  }
+                                >
+                                  Accept
+                                </button>
+                              )}
+
+                              {product?.status === "reject" ? (
+                                <button className="border text-gray-700  bg-gray-300 border-gray-300  py-1 px-2 rounded duration-300">
+                                  Reject
+                                </button>
+                              ) : (
+                                <button
+                                  className="border border-red-700 text-red-700 hover:text-white  hover:bg-red-700 py-1 px-2 rounded duration-300"
+                                  onClick={() =>
+                                    handelStatusReject(product?._id)
+                                  }
+                                >
+                                  Reject
+                                </button>
+                              )}
                             </div>
                           </td>
                         </tr>

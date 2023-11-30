@@ -20,7 +20,7 @@ const Products = () => {
   const [updateAll, setUpdateAll] = useState(0);
   const [searchText, setSearchText] = useState("");
 
-  const limit = 3;
+  const limit = 10;
   const navigate = useNavigate();
   console.log(searchText);
   useEffect(() => {

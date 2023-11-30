@@ -13,6 +13,7 @@ import Main from "../Layout/Main";
 import Home from "../Pages/FrontendPages/Home/Home";
 import Products from "../Pages/FrontendPages/Products/Products";
 import Registration from "../Pages/FrontendPages/RegistrationPage/Registration";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -55,59 +56,43 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <ViewProfile></ViewProfile>
-          </PrivateRoute>
-        ),
+        element: <ViewProfile></ViewProfile>,
       },
       {
         path: "/dashboard/addproduct",
-        element: (
-          <PrivateRoute>
-            <AddProduct></AddProduct>
-          </PrivateRoute>
-        ),
+        element: <AddProduct></AddProduct>,
       },
 
       {
         path: "/dashboard/myproduct",
-        element: (
-          <PrivateRoute>
-            <MyProducts></MyProducts>
-          </PrivateRoute>
-        ),
+        element: <MyProducts></MyProducts>,
       },
       {
         path: "/dashboard/updateproduct/:_id",
-        element: (
-          <PrivateRoute>
-            <UpdateProduct></UpdateProduct>
-          </PrivateRoute>
-        ),
+        element: <UpdateProduct></UpdateProduct>,
       },
       {
         path: "/dashboard/reviewproduct",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ProductReview></ProductReview>
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
         path: "/dashboard/reportedcontent",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ReportedContents></ReportedContents>
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
         path: "/dashboard/manageusers",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ManageUsers></ManageUsers>
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
     ],

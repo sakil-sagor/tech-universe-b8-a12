@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../../Context/AuthProvider";
-import Loading from "../../Shared/Loading/Loading";
-import { default as userRole } from "../../hooks/userRole";
+import Loading from "../Components/SharedComp/Loading/Loading";
+import { AuthContext } from "../Context/AuthProvider";
+import userRole from "../hooks/userRole";
 
 const AdminRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  const { userDetails, isAdminLoading } = userRole();
-  console.log(user, userDetails);
+  const [userDetails, isAdminLoading] = userRole();
   const location = useLocation();
+
   if (loading || isAdminLoading) {
     return <Loading></Loading>;
   }
@@ -16,7 +16,10 @@ const AdminRoute = ({ children }) => {
     return children;
   }
   return (
-    <Navigate to="/registration" state={{ form: location }} replace></Navigate>
+    <Navigate
+      to="/registration"
+      state={{ form: location, replace: true }}
+    ></Navigate>
   );
 };
 
