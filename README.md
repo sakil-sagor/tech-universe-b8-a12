@@ -27,3 +27,7 @@
 - moderate can review product
 
 - admin can review everything
+
+যেই ভাই এসাইনমেন্ট চেক করছেন। প্লিজ লিংকে ক্লিক করেন, আর্লি জবপ্লেসমেন্ট নিয়ে কিছু কথা ছিল সেগুলাই বলেছি এইখানে ঃ
+
+- https://docs.google.com/document/d/1pxFYrT_9GdWeC-ft68hVur2NeAuhipQU7JinAGzGDZs/edit?usp=sharing
