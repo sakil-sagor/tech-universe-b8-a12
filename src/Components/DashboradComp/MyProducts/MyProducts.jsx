@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AiFillDatabase } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../../Context/AuthProvider";
@@ -49,6 +50,10 @@ const MyProducts = () => {
     }
   };
 
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="min-h-[80vh] bg-blue-50 ">
       <div className="container mx-auto px-2">
@@ -66,9 +71,11 @@ const MyProducts = () => {
               </div>
             </div>
             <hr />
-            {loading ? (
+            {products.length === 0 ? (
               <div className="block ">
-                <Loading></Loading>
+                <p className="text-center text-red-700 font-semibold mt-12">
+                  No Data Found yet!
+                </p>
               </div>
             ) : (
               <table className="w-full table-auto">
@@ -115,9 +122,13 @@ const MyProducts = () => {
                             >
                               Delete
                             </button>
-                            <button className="border text-white  bg-blue-700 border-blue-700 hover:bg-white hover:text-blue-700  py-1 px-2 rounded duration-300">
-                              Update
-                            </button>
+                            <Link
+                              to={`/dashboard/updateproduct/${teacher?._id}`}
+                            >
+                              <button className="border text-white  bg-blue-700 border-blue-700 hover:bg-white hover:text-blue-700  py-1 px-2 rounded duration-300">
+                                Update
+                              </button>
+                            </Link>
                           </div>
                         </td>
                       </tr>

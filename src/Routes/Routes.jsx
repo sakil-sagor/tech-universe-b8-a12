@@ -4,6 +4,7 @@ import ManageUsers from "../Components/DashboradComp/ManageUsers/ManageUsers";
 import MyProducts from "../Components/DashboradComp/MyProducts/MyProducts";
 import ProductReview from "../Components/DashboradComp/ProductReview/ProductReview";
 import ReportedContents from "../Components/DashboradComp/ReportedContents/ReportedContents";
+import UpdateProduct from "../Components/DashboradComp/UpdateProduct/UpdateProduct";
 import ViewProfile from "../Components/DashboradComp/ViewProfile/ViewProfile";
 import ProductsDetails from "../Components/FrontendComp/ProductsDetails/ProductsDetails";
 import ErroPage from "../Components/SharedComp/ErrorPage/ErroPage";
@@ -74,6 +75,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyProducts></MyProducts>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/updateproduct/:_id",
+        element: (
+          <PrivateRoute>
+            <UpdateProduct></UpdateProduct>
           </PrivateRoute>
         ),
       },

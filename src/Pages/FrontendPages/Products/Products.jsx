@@ -22,7 +22,7 @@ const Products = () => {
 
   const limit = 3;
   const navigate = useNavigate();
-
+  console.log(searchText);
   useEffect(() => {
     // let url = `http://localhost:5000/api/v1/product/all`;
     let url = `http://localhost:5000/api/v1/product/all?search=${searchText}&page=${
@@ -31,6 +31,7 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(url);
+        console.log(response);
         setProducts(response?.data?.data?.result);
         setCount(response?.data?.data?.pageCount);
         setTotal(response?.data?.data?.totalRoom);
@@ -42,7 +43,7 @@ const Products = () => {
       }
     };
     fetchProducts();
-  }, [page, total, sortByPrice, updateAll]);
+  }, [page, total, sortByPrice, updateAll, searchText]);
 
   const handelSearch = () => {
     useEffect(() => {
@@ -53,11 +54,9 @@ const Products = () => {
       const fetchProducts = async () => {
         try {
           const response = await axios.get(url);
-
           setProducts(response?.data?.data);
           setCount(response?.data?.data?.pageCount);
           setTotal(response?.data?.data?.totalRoom);
-
           setLoading(false);
         } catch (error) {
           setError(error);
@@ -160,7 +159,7 @@ const Products = () => {
             <Loading></Loading>
           ) : (
             <div className="mt-4">
-              {allProducts.length ? (
+              {allProducts?.length ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
                   {allProducts?.map((product) => (
                     <SingleProduct
@@ -186,10 +185,7 @@ const Products = () => {
             <>
               <hr className="border-2 border-t-white mt-16" />
               <div className=" mb-16  flex items-center mt-8">
-                <p className="text-sky-800 font-semibold mr-3">
-                  {" "}
-                  Total Page :{" "}
-                </p>
+                <p className="text-sky-800 font-semibold mr-3">Total Page :</p>
                 <div>
                   {[...Array(count).keys()].map((number) => (
                     <button
