@@ -24,7 +24,7 @@ const useUpvotes = () => {
     };
     try {
       const response = await axiosSecure.put(
-        `http://localhost:5000/api/v1/product/upvote`,
+        `https://tech-server-12.vercel.app/api/v1/product/upvote`,
         upVoteData,
         {
           headers: {

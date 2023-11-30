@@ -34,7 +34,7 @@ const ReviewAdd = ({ _id, fetchData, setFetchData }) => {
 
     try {
       const response = await axiosSecure.put(
-        `http://localhost:5000/api/v1/product/${_id}/review`,
+        `https://tech-server-12.vercel.app/api/v1/product/${_id}/review`,
         reviewData,
         {
           headers: {

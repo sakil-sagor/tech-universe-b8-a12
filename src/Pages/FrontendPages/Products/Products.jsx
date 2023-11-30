@@ -24,10 +24,17 @@ const Products = () => {
   const navigate = useNavigate();
   console.log(searchText);
   useEffect(() => {
-    // let url = `http://localhost:5000/api/v1/product/all`;
-    let url = `http://localhost:5000/api/v1/product/all?search=${searchText}&page=${
-      page + 1
-    }&limit=${limit}`;
+    let url;
+
+    if (searchText) {
+      url = `https://tech-server-12.vercel.app/api/v1/product/all?search=${searchText}&page=${
+        page + 1
+      }&limit=${limit}`;
+    } else {
+      url = `https://tech-server-12.vercel.app/api/v1/product/all?page=${
+        page + 1
+      }`;
+    }
     const fetchProducts = async () => {
       try {
         const response = await axios.get(url);
@@ -44,28 +51,6 @@ const Products = () => {
     };
     fetchProducts();
   }, [page, total, sortByPrice, updateAll, searchText]);
-
-  const handelSearch = () => {
-    useEffect(() => {
-      // let url = `http://localhost:5000/api/v1/product/all?`;
-      // let url = `http://localhost:5000/api/v1/rooms/all?sort=${sortByPrice}&page=${
-      //   page + 1
-      // }&limit=${limit}`;
-      const fetchProducts = async () => {
-        try {
-          const response = await axios.get(url);
-          setProducts(response?.data?.data);
-          setCount(response?.data?.data?.pageCount);
-          setTotal(response?.data?.data?.totalRoom);
-          setLoading(false);
-        } catch (error) {
-          setError(error);
-          setLoading(false);
-        }
-      };
-      fetchProducts();
-    }, [page, total, sortByPrice, updateAll]);
-  };
 
   const handleUpVote = async (product) => {
     if (!user?.email) {
@@ -84,7 +69,7 @@ const Products = () => {
     };
     try {
       const response = await axiosSecure.put(
-        `http://localhost:5000/api/v1/product/upvote`,
+        `https://tech-server-12.vercel.app/api/v1/product/upvote`,
         upVoteData,
         {
           headers: {
@@ -112,45 +97,24 @@ const Products = () => {
   return (
     <div className="container mx-auto px-2">
       <div>
-        <div className="py-4">
+        <div className="py-4 ">
           <h2 className="text-sky-800 font-semibold text-2xl ">
             <AiFillDatabase className="inline mb-1"></AiFillDatabase> All
             Products:
           </h2>
-          <div className="flex items-center justify-between mt-4 px-2">
+          <div className="grid grid-cols-2 w-full items-center justify-between mt-4 px-2 ">
             <p>
               Total Result: <span>{total}</span>
             </p>
             <div>
               <input
                 type="text"
-                className="border py-2 rounded-l-md"
+                className="border py-2  px-4 rounded-md "
+                placeholder="search  here..."
                 onChange={(e) => setSearchText(e.target.value)}
               />
-              <button
-                onClick={handelSearch}
-                className="border py-2 rounded-r-md px-2 bg-sky-700 text-white hover:bg-sky-900 duration-300"
-              >
-                Search
-              </button>
             </div>
-            <div>
-              <label htmlFor="">Sort By </label>
-
-              <select
-                className="border  border-gray-300 py-2  text-gray-600 bg-sky-50 rounded-full px-3"
-                name="religion"
-                id="religion"
-                required
-                onChange={(e) => setSortByPrice(e.target.value)}
-              >
-                <option className="" value="" disabled selected>
-                  --Sort By Price--
-                </option>
-                <option value="-price">Price High to Low </option>
-                <option value="price">Price Low to High</option>
-              </select>
-            </div>
+            <div></div>
           </div>
         </div>
         <hr />

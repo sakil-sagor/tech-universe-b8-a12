@@ -57,31 +57,32 @@ const SideNavbar = () => {
               </div>
             </>
           )}
-          {!isAdminLoading && (
-            <div>
-              {userDetails?.role === "moderator" && (
-                <>
-                  <div>
-                    <Link
-                      className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-                      to="/dashboard/reviewproduct"
-                    >
-                      Product Review
-                    </Link>
-                  </div>
 
-                  <div>
-                    <Link
-                      className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
-                      to="/dashboard/reportedcontent"
-                    >
-                      Reported Content
-                    </Link>
-                  </div>
-                </>
-              )}
-            </div>
-          )}
+          <div>
+            {(userDetails?.role === "moderator" ||
+              userDetails?.role === "admin") && (
+              <>
+                <div>
+                  <Link
+                    className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
+                    to="/dashboard/reviewproduct"
+                  >
+                    Product Review
+                  </Link>
+                </div>
+
+                <div>
+                  <Link
+                    className=" block py-1 border mb-3 hover:bg-blue-900 hover:text-white rounded-lg"
+                    to="/dashboard/reportedcontent"
+                  >
+                    Reported Content
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+
           {userDetails?.role === "admin" && (
             <>
               <div>

@@ -16,7 +16,7 @@ const FeaturedProducts = () => {
   const [updateAll, setUpdateAll] = useState(0);
   const navigate = useNavigate();
   useEffect(() => {
-    let url = `http://localhost:5000/api/v1/product/featuredProducts`;
+    let url = `https://tech-server-12.vercel.app/api/v1/product/featuredProducts`;
     const fetchProducts = async () => {
       try {
         const response = await axios.get(url);
@@ -30,7 +30,7 @@ const FeaturedProducts = () => {
     fetchProducts();
   }, [updateAll]);
   useEffect(() => {
-    let url = `http://localhost:5000/api/v1/product/treading`;
+    let url = `https://tech-server-12.vercel.app/api/v1/product/treading`;
     const fetchProducts = async () => {
       try {
         const response = await axios.get(url);
@@ -62,7 +62,7 @@ const FeaturedProducts = () => {
     console.log(upVoteData);
     try {
       const response = await axiosSecure.put(
-        `http://localhost:5000/api/v1/product/upvote`,
+        `https://tech-server-12.vercel.app/api/v1/product/upvote`,
         upVoteData,
         {
           headers: {

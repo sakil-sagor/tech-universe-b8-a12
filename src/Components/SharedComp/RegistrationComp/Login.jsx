@@ -24,7 +24,7 @@ const Login = () => {
       const result = await signIn(email, password);
 
       await axiosSecure.post(
-        "http://localhost:5000/api/v1/accesstoken/generatetoken",
+        "https://tech-server-12.vercel.app/api/v1/accesstoken/generatetoken",
         { email: result?.user?.email }
       );
 
@@ -45,7 +45,7 @@ const Login = () => {
       if (result?.user?.email) {
         console.log(result);
         await axiosSecure.post(
-          "http://localhost:5000/api/v1/accesstoken/generatetoken",
+          "https://tech-server-12.vercel.app/api/v1/accesstoken/generatetoken",
           { email: result?.user?.email }
         );
         const userInfo = {

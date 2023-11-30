@@ -14,7 +14,7 @@ const MyProducts = () => {
   const [updateAll, setUpdateAll] = useState(0);
 
   useEffect(() => {
-    let url = `http://localhost:5000/api/v1/product/all/${user?.email}`;
+    let url = `https://tech-server-12.vercel.app/api/v1/product/all/${user?.email}`;
     const fetchProducts = async () => {
       try {
         const response = await axiosSecure.get(url);
@@ -32,7 +32,7 @@ const MyProducts = () => {
   const handelDeletProduct = async (productId) => {
     try {
       const response = await axiosSecure.delete(
-        `http://localhost:5000/api/v1/product/update?productId=${productId}`
+        `https://tech-server-12.vercel.app/api/v1/product/update?productId=${productId}`
       );
 
       const data = response.data;

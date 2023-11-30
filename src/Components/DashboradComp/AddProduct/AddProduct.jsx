@@ -100,7 +100,7 @@ const AddProduct = () => {
       tags: tags,
     };
 
-    fetch("http://localhost:5000/api/v1/product/create", {
+    fetch("https://tech-server-12.vercel.app/api/v1/product/create", {
       method: "POST",
       headers: {
         "content-type": "application/json",

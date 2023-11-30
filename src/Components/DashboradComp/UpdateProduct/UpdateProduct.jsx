@@ -27,7 +27,7 @@ const UpdateProduct = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        let url = `http://localhost:5000/api/v1/product/${_id}`;
+        let url = `https://tech-server-12.vercel.app/api/v1/product/${_id}`;
         const response = await axiosSecure.get(url);
 
         setFormData(response?.data?.data);
@@ -117,13 +117,16 @@ const UpdateProduct = () => {
 
     console.log(formData);
     // Replace this with your API endpoint to update the product data
-    fetch(`http://localhost:5000/api/v1/product/updateProdut/${_id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
+    fetch(
+      `https://tech-server-12.vercel.app/api/v1/product/updateProdut/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.status === "success") {

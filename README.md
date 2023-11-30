@@ -1,8 +1,29 @@
-# React + Vite
+# T-UniverS. Soft ind.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## live Link: https://assignment12-sakil.netlify.app/
 
-Currently, two official plugins are available:
+### Welcome to tech product market, where user can subscribe and view about latest tech products.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Our core vision and main features :
+
+- User can add find featured products
+
+- User can add find treading products
+
+- User can add find search products by tag name
+
+- User can like a product
+
+- User can make a feadback about a product
+
+- User can login with his/her google account or a custom email pass
+
+- User can make a contact with our support
+
+- User can make a a review about us
+
+- user cand report about any unhealthy product
+
+- moderate can review product
+
+- admin can review everything

@@ -83,7 +83,7 @@ const AuthProvider = ({ children }) => {
 
   const saveUser = (displayName, email, method) => {
     const user = { name: displayName, email: email, role: "" };
-    fetch("http://localhost:5000/user", {
+    fetch("https://tech-server-12.vercel.app/user", {
       method: method,
       headers: {
         "content-type": "application/json",

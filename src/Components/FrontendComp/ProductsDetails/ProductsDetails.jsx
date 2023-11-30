@@ -20,7 +20,7 @@ const ProductsDetails = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        let url = `http://localhost:5000/api/v1/product/${_id}`;
+        let url = `https://tech-server-12.vercel.app/api/v1/product/${_id}`;
         const response = await axiosSecure.get(url);
         setProduct(response?.data?.data);
         setLoading(false);
@@ -45,7 +45,7 @@ const ProductsDetails = () => {
     };
     try {
       const response = await axiosSecure.put(
-        `http://localhost:5000/api/v1/product/upvote`,
+        `https://tech-server-12.vercel.app/api/v1/product/upvote`,
         upVoteData,
         {
           headers: {
@@ -81,7 +81,7 @@ const ProductsDetails = () => {
     if (reportText) {
       try {
         const response = await axiosSecure.put(
-          `http://localhost:5000/api/v1/product/${_id}/report`,
+          `https://tech-server-12.vercel.app/api/v1/product/${_id}/report`,
           reportData,
           {
             headers: {

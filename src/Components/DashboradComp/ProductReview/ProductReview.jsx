@@ -11,11 +11,13 @@ const ProductReview = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [updateAll, setUpdateAll] = useState(0);
+  const [count, setCount] = useState(0);
+  const [total, setTotal] = useState(0);
   const [page, setPage] = useState(0);
   const limit = 10;
 
   useEffect(() => {
-    let url = `http://localhost:5000/api/v1/product/allreviewproduct?sort=-status&page=${
+    let url = `https://tech-server-12.vercel.app/api/v1/product/allreviewproduct?sort=-status&page=${
       page + 1
     }&limit=${limit}`;
 
@@ -24,6 +26,9 @@ const ProductReview = () => {
         const response = await axiosSecure.get(url);
 
         setProducts(response?.data?.data?.result);
+        setCount(response?.data?.data?.pageCount);
+
+        setTotal(response?.data?.data?.totalResult);
 
         setLoading(false);
       } catch (error) {
@@ -31,12 +36,12 @@ const ProductReview = () => {
       }
     };
     fetchProducts();
-  }, [updateAll, user?.email]);
+  }, [total, page, updateAll, user?.email]);
 
   const handelMakeFeatured = async (productId) => {
     try {
       const response = await axiosSecure.patch(
-        `http://localhost:5000/api/v1/product/update?productId=${productId}`
+        `https://tech-server-12.vercel.app/api/v1/product/update?productId=${productId}`
       );
 
       const data = response.data;
@@ -52,7 +57,7 @@ const ProductReview = () => {
   const handelStatusActive = async (productId) => {
     try {
       const response = await axiosSecure.patch(
-        `http://localhost:5000/api/v1/product/statusActive?productId=${productId}`
+        `https://tech-server-12.vercel.app/api/v1/product/statusActive?productId=${productId}`
       );
 
       const data = response.data;
@@ -70,7 +75,7 @@ const ProductReview = () => {
   const handelStatusReject = async (productId) => {
     try {
       const response = await axiosSecure.patch(
-        `http://localhost:5000/api/v1/product/statusReject?productId=${productId}`
+        `https://tech-server-12.vercel.app/api/v1/product/statusReject?productId=${productId}`
       );
 
       const data = response.data;
@@ -87,13 +92,11 @@ const ProductReview = () => {
   };
   return (
     <div>
-      <div className="min-h-[80vh] bg-blue-50 ">
+      <div className="min-h-[80vh] bg-blue-50 my-2 ">
         <div className="container mx-auto px-2">
-          <br />
-
-          <div className="w-full max-w-screen-lg mx-auto bg-white  mt-8">
+          <div className="w-full max-w-screen-lg mx-auto bg-white  rounded-md">
             <div className="overflow-x-auto sm:px-1 md:p-8">
-              <div className="py-6">
+              <div className="py-">
                 <h2 className="text-green-600 font-semibold text-2xl ">
                   <AiFillDatabase className="inline mb-1"></AiFillDatabase>
                   Products list for Review
@@ -157,7 +160,7 @@ const ProductReview = () => {
                           </td>
                           <td className="px-4 py-2  text-white">
                             <div className="flex gap-1">
-                              {product?.status === "active" ? (
+                              {product?.status === "bactive" ? (
                                 <button className="border text-gray-700  bg-gray-300 border-gray-300  py-1 px-2 rounded duration-300">
                                   Accept
                                 </button>
@@ -172,7 +175,7 @@ const ProductReview = () => {
                                 </button>
                               )}
 
-                              {product?.status === "reject" ? (
+                              {product?.status === "creject" ? (
                                 <button className="border text-gray-700  bg-gray-300 border-gray-300  py-1 px-2 rounded duration-300">
                                   Reject
                                 </button>
@@ -194,6 +197,33 @@ const ProductReview = () => {
                   </>
                 </table>
               )}
+              <div className=" ">
+                {total ? (
+                  <>
+                    <hr className="border-2 border-t-white mt-16" />
+                    <div className=" mb-16  flex items-center mt-8">
+                      <p className="text-sky-800 font-semibold mr-3">
+                        Total Page :
+                      </p>
+                      <div>
+                        {[...Array(count).keys()].map((number) => (
+                          <button
+                            className={`${
+                              page === number ? "bg-sky-700 " : " bg-gray-500"
+                            } text-white rounded  mr-4 py-1 px-4`}
+                            key={number}
+                            onClick={() => setPage(number)}
+                          >
+                            {number + 1}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div></div>
+                )}
+              </div>
             </div>
           </div>
         </div>
