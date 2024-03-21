@@ -22,6 +22,12 @@ const UpdateProduct = () => {
     tags: [],
     externalLink: "",
     productImage: "",
+    costingPrice: "",
+    offerRate: "",
+    regularPrice: "",
+    originName: "",
+    brandName: "",
+    category: "",
   });
 
   useEffect(() => {
@@ -152,7 +158,7 @@ const UpdateProduct = () => {
               <div className=" ">
                 <div className=" border shadow-md shadow-blue-300 px-2 py-6 md:p-8 text-center rounded-md">
                   <h2 className="text-2xl font-bold text-blue-700">
-                    Add Product Detials
+                    Update Product Detials
                   </h2>
                 </div>
                 <div className=" mt-4 ">
@@ -237,6 +243,111 @@ const UpdateProduct = () => {
                         autocomplete
                       />
                     </div>
+                    <div className="grid grid-cols-2 lg:grid-cols-3 items-center justify-between">
+                      <div className=" mt-2">
+                        <label
+                          className=" text-gray-600 font-semibold  "
+                          htmlFor="costingPrice"
+                        >
+                          Costing Price
+                        </label>
+                        <input
+                          className="py-1 block  px-2 rounded-md border border-gray-300"
+                          type="number"
+                          min="0"
+                          name="costingPrice"
+                          placeholder="Costing Price"
+                          value={formData.costingPrice}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                      <div className=" mt-2">
+                        <label
+                          className=" text-gray-600 font-semibold  "
+                          htmlFor="regularPrice"
+                        >
+                          Regular Price
+                        </label>
+                        <input
+                          className="py-1 block  px-2 rounded-md border border-gray-300"
+                          type="number"
+                          min="0"
+                          name="regularPrice"
+                          placeholder="  Regular Price"
+                          value={formData.regularPrice}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className=" mt-2">
+                        <label
+                          className=" text-gray-600 font-semibold  "
+                          htmlFor="offerRate"
+                        >
+                          Discount / Offer Rate
+                        </label>
+                        <input
+                          className="py-1 block w-full px-2 rounded-md border border-gray-300"
+                          type="number"
+                          min="0"
+                          max="100"
+                          name="offerRate"
+                          placeholder="0-100 % discount"
+                          value={formData.offerRate}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                      <div className=" mt-2">
+                        <label
+                          className=" text-gray-600 font-semibold  "
+                          htmlFor="originName"
+                        >
+                          Origin
+                        </label>
+                        <input
+                          className="py-1 block  px-2 rounded-md border border-gray-300"
+                          type="text"
+                          name="originName"
+                          placeholder="Origin"
+                          value={formData.originName}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className=" mt-2">
+                        <label
+                          className=" text-gray-600 font-semibold  "
+                          htmlFor="brandName"
+                        >
+                          Brand Name
+                        </label>
+                        <input
+                          className="py-1 block  px-2 rounded-md border border-gray-300"
+                          type="text"
+                          name="brandName"
+                          placeholder="Brand Name"
+                          value={formData.brandName}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                      <div className=" mt-2">
+                        <label
+                          className=" text-gray-600 font-semibold  "
+                          htmlFor="category"
+                        >
+                          Category
+                        </label>
+                        <input
+                          className="py-1 block  px-2 rounded-md border border-gray-300"
+                          type="text"
+                          name="category"
+                          placeholder="Category"
+                          value={formData.category}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+                    </div>
+
                     <div className=" mt-2">
                       <label
                         className=" text-gray-600 font-semibold  "

@@ -4,20 +4,19 @@ import { Link } from "react-router-dom";
 const SingleProduct = ({ product, handleUpVote, user }) => {
   const {
     _id,
-    productId,
+
     productName,
     productImage,
-    ownerInfo,
-    externalLink,
-    downVotes,
+    brandName,
     upvotes,
-    description,
+    category,
     tags,
+    originName,
   } = product;
 
   return (
     <div>
-      <div className="relative">
+      <div className="relative text-white">
         <div className="">
           <img className="rounded-md" src={productImage} alt="" />
         </div>
@@ -32,7 +31,7 @@ const SingleProduct = ({ product, handleUpVote, user }) => {
               <div className="flex items-center">
                 {product.ownerInfo?.ownerEmail === user?.email ? (
                   <button>
-                    <AiFillLike />
+                    <AiFillLike className="text-2xl" />
                   </button>
                 ) : (
                   <button
@@ -51,6 +50,14 @@ const SingleProduct = ({ product, handleUpVote, user }) => {
                 <AiFillDislike />
                 <p>{downVotes?.length}</p>
               </div> */}
+            </div>
+          </div>
+
+          <div className="my-2">
+            <div className="flex justify-between items-center text-gray-200 text-sm">
+              <p>Brand: {brandName}</p>
+
+              <p>Origin: {originName}</p>
             </div>
           </div>
 

@@ -132,9 +132,6 @@ const AddProduct = () => {
             category: "",
           });
           setLoading(false);
-          setTimeout(() => {
-            navigate("/dashboard/myproduct");
-          }, 1500);
         }
 
         if (data.error) {
