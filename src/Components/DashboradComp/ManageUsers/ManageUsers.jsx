@@ -66,7 +66,7 @@ const ManageUsers = () => {
           </div>
         </div>
         <div>
-          <table className="w-full table-auto">
+          <table className="w-full table-auto overflow-x-auto sm:px-1 md:p-8">
             <thead>
               <tr className="text-left">
                 <th className="px-4 py-2">Name</th>

@@ -20,7 +20,7 @@ const Products = () => {
   const [updateAll, setUpdateAll] = useState(0);
   const [searchText, setSearchText] = useState("");
 
-  const limit = 10;
+  const limit = 20;
   const navigate = useNavigate();
   console.log(searchText);
   useEffect(() => {
@@ -103,9 +103,7 @@ const Products = () => {
             Products:
           </h2>
           <div className="grid grid-cols-2 w-full items-center justify-between mt-4 px-2 ">
-            <p>
-              Total Result: <span>{total}</span>
-            </p>
+            <p></p>
             <div>
               <input
                 type="text"

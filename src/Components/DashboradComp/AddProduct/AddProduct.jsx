@@ -99,7 +99,7 @@ const AddProduct = () => {
       ownerInfo: ownerInfo,
       tags: tags,
     };
-
+    console.log(productData);
     fetch("https://tech-server-12.vercel.app/api/v1/product/create", {
       method: "POST",
       headers: {

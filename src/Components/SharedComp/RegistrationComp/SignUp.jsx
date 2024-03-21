@@ -11,8 +11,8 @@ const SignUp = ({ loginArea }) => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    // const capitalLetterRegex = /[A-Z]/;
-    // const specialCharacterRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
+    const capitalLetterRegex = /[A-Z]/;
+    const specialCharacterRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
 
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -26,15 +26,15 @@ const SignUp = ({ loginArea }) => {
       toast.error("Password length is less then 6 charecter");
       return;
     }
-    // if (!capitalLetterRegex.test(password)) {
-    //   toast.error("Password must contain at least one capital letter.");
-    //   return;
-    // }
+    if (!capitalLetterRegex.test(password)) {
+      toast.error("Password must contain at least one capital letter.");
+      return;
+    }
 
-    // if (!specialCharacterRegex.test(password)) {
-    //   toast.error("Password must contain at least one special character.");
-    //   return;
-    // }
+    if (!specialCharacterRegex.test(password)) {
+      toast.error("Password must contain at least one special character.");
+      return;
+    }
 
     // create user
     createUser(email, password)
