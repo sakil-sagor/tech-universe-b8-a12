@@ -20,6 +20,12 @@ const AddProduct = () => {
     ownerInfo: {},
     tags: [],
     externalLink: "",
+    costingPrice: "",
+    offerRate: "",
+    regularPrice: "",
+    originName: "",
+    brandName: "",
+    category: "",
   });
   ///////////////////////////////////
   const handleDelete = (i) => {
@@ -100,7 +106,7 @@ const AddProduct = () => {
       tags: tags,
     };
     console.log(productData);
-    fetch("https://tech-server-12.vercel.app/api/v1/product/create", {
+    fetch("http://localhost:5000/api/v1/product/create", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -116,8 +122,14 @@ const AddProduct = () => {
             description: "",
             productImage: "",
             ownerInfo: {},
-            setTags: "",
+            tags: [],
             externalLink: "",
+            costingPrice: "",
+            offerRate: "",
+            regularPrice: "",
+            originName: "",
+            brandName: "",
+            category: "",
           });
           setLoading(false);
           setTimeout(() => {
@@ -134,7 +146,7 @@ const AddProduct = () => {
   return (
     <div className="bg-sky-50 min-h-screen">
       <div className=" pt-4  pb-24 ">
-        <div className="w-full md:3/4 lg:w-2/4 m-auto pt-12">
+        <div className="w-full md:w-3/4  m-auto pt-12">
           <div className="bg-sky-50 ">
             <div className=" ">
               <div className=" border shadow-md shadow-blue-300 px-2 py-6 md:p-8 text-center rounded-md">
@@ -193,36 +205,142 @@ const AddProduct = () => {
                       onChange={handleInputChange}
                     />
                   </div>
-
-                  <div className=" mt-2">
-                    <label
-                      className=" text-gray-600 font-semibold block  "
-                      htmlFor="image"
-                    >
-                      Image
-                    </label>
-                    <input
-                      id="image"
-                      className="py-1 px-2 rounded-md"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                    />
+                  <div className="flex  items-center justify-start">
+                    <div className=" mt-2 w-1/2">
+                      <label
+                        className=" text-gray-600 font-semibold block  "
+                        htmlFor="image"
+                      >
+                        Image
+                      </label>
+                      <input
+                        id="image"
+                        className="py-1 rounded-md"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                      />
+                    </div>
+                    {/* Tags input field */}
+                    <div>
+                      <label className=" text-gray-600 font-semibold block ">
+                        Tags:
+                      </label>
+                      <ReactTags
+                        className=" rounded-md border border-gray-300"
+                        tags={tags}
+                        handleDelete={handleDelete}
+                        handleAddition={handleAddition}
+                        handleDrag={handleDrag}
+                        inputFieldPosition="bottom"
+                        autocomplete
+                      />
+                    </div>
                   </div>
-                  {/* Tags input field */}
-                  <div>
-                    <label className=" text-gray-600 font-semibold block ">
-                      Tags:
-                    </label>
-                    <ReactTags
-                      className="py-1 w-full  px-2 rounded-md border border-gray-300"
-                      tags={tags}
-                      handleDelete={handleDelete}
-                      handleAddition={handleAddition}
-                      handleDrag={handleDrag}
-                      inputFieldPosition="bottom"
-                      autocomplete
-                    />
+
+                  <div className="grid grid-cols-2 lg:grid-cols-3 items-center justify-between">
+                    <div className=" mt-2">
+                      <label
+                        className=" text-gray-600 font-semibold  "
+                        htmlFor="costingPrice"
+                      >
+                        Costing Price
+                      </label>
+                      <input
+                        className="py-1 block  px-2 rounded-md border border-gray-300"
+                        type="number"
+                        min="0"
+                        name="costingPrice"
+                        placeholder="Costing Price"
+                        value={formData.costingPrice}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className=" mt-2">
+                      <label
+                        className=" text-gray-600 font-semibold  "
+                        htmlFor="regularPrice"
+                      >
+                        Regular Price
+                      </label>
+                      <input
+                        className="py-1 block  px-2 rounded-md border border-gray-300"
+                        type="number"
+                        min="0"
+                        name="regularPrice"
+                        placeholder="  Regular Price"
+                        value={formData.regularPrice}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+
+                    <div className=" mt-2">
+                      <label
+                        className=" text-gray-600 font-semibold  "
+                        htmlFor="offerRate"
+                      >
+                        Discount / Offer Rate
+                      </label>
+                      <input
+                        className="py-1 block w-full px-2 rounded-md border border-gray-300"
+                        type="number"
+                        min="0"
+                        max="100"
+                        name="offerRate"
+                        placeholder="0-100 % discount"
+                        value={formData.offerRate}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className=" mt-2">
+                      <label
+                        className=" text-gray-600 font-semibold  "
+                        htmlFor="originName"
+                      >
+                        Origin
+                      </label>
+                      <input
+                        className="py-1 block  px-2 rounded-md border border-gray-300"
+                        type="text"
+                        name="originName"
+                        placeholder="Origin"
+                        value={formData.originName}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+
+                    <div className=" mt-2">
+                      <label
+                        className=" text-gray-600 font-semibold  "
+                        htmlFor="brandName"
+                      >
+                        Brand Name
+                      </label>
+                      <input
+                        className="py-1 block  px-2 rounded-md border border-gray-300"
+                        type="text"
+                        name="brandName"
+                        placeholder="Brand Name"
+                        value={formData.brandName}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className=" mt-2">
+                      <label
+                        className=" text-gray-600 font-semibold  "
+                        htmlFor="category"
+                      >
+                        Category
+                      </label>
+                      <input
+                        className="py-1 block  px-2 rounded-md border border-gray-300"
+                        type="text"
+                        name="category"
+                        placeholder="Category"
+                        value={formData.category}
+                        onChange={handleInputChange}
+                      />
+                    </div>
                   </div>
                   <div className=" mt-2">
                     <label
@@ -235,7 +353,7 @@ const AddProduct = () => {
                       className="py-1 w-full  px-2 rounded-md border border-gray-300"
                       type="text"
                       name="externalLink"
-                      placeholder="User name"
+                      placeholder="External Links"
                       value={formData.externalLink}
                       onChange={handleInputChange}
                     />
