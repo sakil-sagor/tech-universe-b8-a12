@@ -14,8 +14,7 @@ const HeaderSingle = (props) => {
         <div className="   items-center ">
           <div className="col-span-6 text-balck text-left py-4 text-center">
             <h1 className="text-2xl md:text-6xl font-extrabold text-center">
-              {" "}
-              <span className="text-white">{titleOne}</span>{" "}
+              <span className="text-white">{titleOne}</span>
             </h1>
             <br />
             <h1 className="text-3xl md:text-5xl my-4 text-white font-bold">

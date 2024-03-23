@@ -24,7 +24,7 @@ const SingleProduct = ({ product, handleUpVote, user }) => {
           <div className="flex justify-between">
             <div>
               <Link to={`/product/${_id}`}>
-                <h2 className="text-white">{productName}</h2>{" "}
+                <h2 className="text-white">{productName}</h2>
               </Link>
             </div>
             <div className="flex gap-x-2 text-white">

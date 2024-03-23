@@ -29,7 +29,7 @@ const Footer = () => {
                 </li>
                 <li className="cursor-pointer hover:underline">History</li>
                 <li className="cursor-pointer hover:underline">
-                  Your Feadback{" "}
+                  Your Feadback
                 </li>
               </ul>
             </NavLink>
@@ -39,7 +39,6 @@ const Footer = () => {
         <div className="col-sapn-6 ">
           <div className=" mt-2 text-center">
             <h3 className="text-center py-2 font-semibold text-xl text-white">
-              {" "}
               Links
             </h3>
             <ul className="tab-list text-gray-300">
@@ -74,7 +73,7 @@ const Footer = () => {
       {/* footer bottom  */}
       <div className="bg-black">
         <p className="py-4 text-center text-gray-500">
-          ©new-collectionbd 2020, Designed & Developed by{" "}
+          ©new-collectionbd 2020, Designed & Developed by
           <a
             className="text-pink-500"
             target="_blank"

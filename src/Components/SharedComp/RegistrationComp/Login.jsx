@@ -85,8 +85,7 @@ const Login = () => {
             <div className="">
               <div className="mb-3 ">
                 <span className=" text-gray-600 font-semibold block mb-2 ">
-                  {" "}
-                  Email{" "}
+                  Email
                 </span>
                 <input
                   placeholder=" Your Email "
@@ -99,8 +98,7 @@ const Login = () => {
 
               <div className="mb-6 ">
                 <span className=" text-gray-600 font-semibold block mb-2">
-                  {" "}
-                  Password{" "}
+                  Password
                 </span>
                 <input
                   placeholder="Password"
@@ -127,8 +125,7 @@ const Login = () => {
                 onClick={handleGoogleSignIn}
                 className="border px-2 py-1 rounded bg-sky-200 hover:bg-sky-300 duration-200"
               >
-                {" "}
-                <AiFillGoogleCircle className="inline-block text-3xl text-gray-600 "></AiFillGoogleCircle>{" "}
+                <AiFillGoogleCircle className="inline-block text-3xl text-gray-600 "></AiFillGoogleCircle>
                 Google
               </button>
             </p>

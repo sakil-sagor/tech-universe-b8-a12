@@ -101,7 +101,7 @@ const SideNavbar = () => {
                 className=" px-6 py-1 text-white bg-pink-800 hover:bg-pink-700 rounded"
                 onClick={handleLogOut}
               >
-                Log Out{" "}
+                Log Out
               </button>
             </div>
           }

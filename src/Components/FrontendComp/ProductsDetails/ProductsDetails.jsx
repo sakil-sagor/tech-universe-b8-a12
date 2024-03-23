@@ -164,7 +164,6 @@ const ProductsDetails = () => {
         <hr className="my-6" />
         <div className="flex">
           <p className="text-lg font-semibold">
-            {" "}
             Do you have any objection. Write a report here ...
           </p>
           {!reportField && (

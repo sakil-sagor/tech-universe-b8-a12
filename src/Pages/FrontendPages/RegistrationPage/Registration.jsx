@@ -25,7 +25,6 @@ const Registration = () => {
               }`}
               onClick={loginArea}
             >
-              {" "}
               Login
             </button>
 
@@ -35,7 +34,6 @@ const Registration = () => {
               }`}
               onClick={signupArea}
             >
-              {" "}
               Registration
             </button>
           </div>
