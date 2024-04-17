@@ -19,7 +19,7 @@ const MyProducts = () => {
       try {
         const response = await axiosSecure.get(url);
         setProducts(response?.data?.data);
-        console.log(response.data);
+
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -102,13 +102,17 @@ const MyProducts = () => {
                           {teacher?.upvotes?.length}
                         </td>
                         <td className="md:px-4 py-2 text-white">
-                          {teacher?.status ? (
+                          {teacher?.status === "pending" ? (
+                            <span className="bg-blue-700 py-1 px-4 rounded">
+                              Pending
+                            </span>
+                          ) : teacher?.status === "active" ? (
                             <span className="bg-green-700 py-1 px-4 rounded">
-                              Visible
+                              Active
                             </span>
                           ) : (
                             <span className="bg-red-700 py-1 px-2 rounded">
-                              Pending
+                              Reject
                             </span>
                           )}
                         </td>

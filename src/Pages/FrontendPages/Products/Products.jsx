@@ -22,7 +22,7 @@ const Products = () => {
 
   const limit = 20;
   const navigate = useNavigate();
-  console.log(searchText);
+
   useEffect(() => {
     let url;
 
@@ -38,7 +38,7 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(url);
-        console.log(response);
+
         setProducts(response?.data?.data?.result);
         setCount(response?.data?.data?.pageCount);
         setTotal(response?.data?.data?.totalRoom);

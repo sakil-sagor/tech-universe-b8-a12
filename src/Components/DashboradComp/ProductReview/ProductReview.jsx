@@ -61,7 +61,6 @@ const ProductReview = () => {
       );
 
       const data = response.data;
-      console.log(data);
 
       if (data.status === "success") {
         toast.success("Successfully Activated");
@@ -79,7 +78,6 @@ const ProductReview = () => {
       );
 
       const data = response.data;
-      console.log(data);
 
       if (data.status === "success") {
         toast.success("Successfully Rejected");
